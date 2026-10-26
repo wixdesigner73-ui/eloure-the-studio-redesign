@@ -20,6 +20,7 @@ document.querySelector('#ftr').outerHTML = `
     <div><h4>Information</h4><ul><li><a href="faq.html">FAQ</a></li><li><a href="agb.html">AGB</a></li><li><a href="impressum.html">Impressum</a></li><li><a href="datenschutz.html">Datenschutzerklärung</a></li><li><a href="https://www.instagram.com/elourethestudio/">Instagram</a></li></ul></div>
     <div><h4>Kontakt</h4><ul><li>Bahnhofstrasse 20<br>8580 Amriswil</li><li><a href="tel:+41765297129">+41 76 529 71 29</a></li><li><a href="mailto:elourethestudio@outlook.com">elourethestudio@outlook.com</a></li><li>Mo–Fr 10:00–20:00<br>Sa 10:00–16:00</li></ul></div>
   </div>
+  <div class="brand" aria-hidden="true">Eloure</div>
   <div class="copy">© ELOURE THE STUDIO · Eloure GmbH. Alle Rechte vorbehalten.</div>
 </div></footer>`;
 
@@ -34,7 +35,7 @@ const watch = root => root.querySelectorAll('.fx').forEach(el => io.observe(el))
 /* lightbox */
 const lb = document.createElement('div'); lb.className = 'lightbox'; lb.innerHTML = '<img alt="">'; document.body.append(lb);
 lb.onclick = () => lb.classList.remove('open');
-document.querySelectorAll('.zoom').forEach(z => z.onclick = () => { lb.querySelector('img').src = z.querySelector('img').src; lb.classList.add('open'); });
+document.querySelectorAll('.zoom').forEach(z => z.onclick = () => { lb.querySelector('img').src = z.querySelector('img').currentSrc || z.querySelector('img').src; lb.classList.add('open'); });
 
 /* price rows – each row links to its own treatment page and into the booking flow */
 const chf = s => s.price == null ? '<small>auf Anfrage</small>' : s.price + '<small>CHF</small>';
@@ -50,7 +51,9 @@ window.initTabs = (tabsEl, listEl) => {
   show(tabsEl.querySelector('button').dataset.k);
 };
 document.querySelectorAll('[data-book]').forEach(a => a.href = BOOK + (a.dataset.book ? '?s=' + a.dataset.book : ''));
-document.querySelectorAll('[data-img]').forEach(i => i.src = IMG[i.dataset.img]);
+/* Wix serves a resized copy – originals are several MB each */
+const sized = u => u + '/v1/fit/w_1400,h_1400,q_82/studio.jpg';
+document.querySelectorAll('[data-img]').forEach(i => { i.loading = i.closest('.hero2,.page-hero,header') ? 'eager' : 'lazy'; i.decoding = 'async'; if (i.dataset.img === 'hero') i.classList.add('trim'); i.src = sized(IMG[i.dataset.img]); });
 const hp = document.querySelector('#home-prices');
 if (hp) hp.innerHTML = [['frauen', 'Oberlippe'], ['frauen', 'Achseln'], ['frauen', 'Gesicht'], ['frauen', 'Beine komplett'], ['frauen', 'Ganzkörper']]
   .map(([c, n]) => rowHTML(SERVICES[c].find(s => s.name === n))).join('');

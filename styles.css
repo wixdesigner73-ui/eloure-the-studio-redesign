@@ -239,3 +239,76 @@ details p{margin-top:12px;max-width:700px;color:rgba(48,37,31,.85)}
 .cat-grid b{font:500 22px var(--serif)} .cat-grid span{font-size:13px;color:var(--taupe);white-space:nowrap}
 .row h3 a:hover{color:var(--terra)}
 @media (max-width:980px){.wgrid{grid-template-columns:1fr;gap:34px}.wsum{position:static}.pick{grid-template-columns:1fr}.prow{grid-template-columns:1fr auto;gap:4px 14px}.prow .du{grid-row:2}.prow .pr{grid-row:1;grid-column:2}.wsteps li{font-size:0;padding-right:0}.wsteps li.on{font-size:11px}.facts{gap:26px}}
+
+/* ===================== LUXURY LAYER ===================== */
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:200;opacity:.035;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+::selection{background:var(--terra);color:#fff}
+h1,h2{font-weight:400} h1 em,h2 em{font-style:italic}
+.label{letter-spacing:.3em;display:flex;align-items:center;gap:16px} .label::before{content:"";width:34px;height:1px;background:currentColor;opacity:.7}
+.story .label,.page-hero .label{} 
+.num{font:italic 400 18px var(--serif);color:var(--terra);margin-right:6px}
+.btn{border-radius:0;padding:20px 34px;letter-spacing:.22em;position:relative;overflow:hidden;isolation:isolate}
+.btn::before{content:"";position:absolute;inset:0;background:var(--copper);transform:translateY(101%);transition:transform .5s var(--ease);z-index:-1}
+.btn:hover{transform:none} .btn:hover::before{transform:none}
+.btn.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)} .btn.ghost::before{background:var(--ink)} .btn.ghost:hover{color:#fff}
+.btn.light::before{background:var(--champagne)} .btn.light:hover{background:var(--ivory)}
+header.site{background:rgba(255,249,244,.88)} header.site .bar{padding:30px 0}
+.logo{font-size:32px;letter-spacing:.22em;font-weight:500} .logo small{letter-spacing:.62em;font-size:9px;margin-top:9px;opacity:.75}
+nav.main a{letter-spacing:.24em}
+
+/* hero 2 */
+.hero2{position:relative;background:radial-gradient(120% 90% at 85% 10%,var(--champagne) 0%,var(--bg) 58%);overflow:hidden;padding:30px 0 0}
+.h2grid{display:grid;grid-template-columns:44px minmax(0,1fr) minmax(0,.92fr);gap:0;align-items:center;min-height:min(86vh,780px);position:relative}
+.h2-side{writing-mode:vertical-rl;transform:rotate(180deg);font:500 10.5px var(--sans);letter-spacing:.42em;text-transform:uppercase;color:var(--taupe);display:flex;gap:26px;align-items:center;justify-self:start}
+.h2-side::after{content:"";width:1px;height:90px;background:var(--taupe);opacity:.5}
+.h2-copy{position:relative;z-index:3;padding:40px 0 70px;margin-right:-150px}
+.h2-copy h1{font-size:clamp(48px,6.7vw,98px);line-height:.96;letter-spacing:-.025em;margin:6px 0 4px}
+.h2-copy h1 .ln{display:block;overflow:hidden;white-space:nowrap;padding-bottom:.08em} .h2-copy h1 .ln>span{display:block;transform:translateY(105%);animation:rise 1.2s var(--ease) forwards}
+.h2-copy h1 .ln:nth-child(2)>span{animation-delay:.12s;padding-left:.55em} .h2-copy h1 .ln:nth-child(3)>span{animation-delay:.24s;font-style:italic;color:var(--terra)}
+@keyframes rise{to{transform:none}}
+.h2-copy .lead{margin:32px 0 38px;max-width:420px}
+.h2-copy .ctas{display:flex;gap:22px;align-items:center;flex-wrap:wrap}
+.h2-art{position:relative;height:min(78vh,700px);min-height:520px;justify-self:end;width:min(100%,520px)}
+.h2-art .frame{position:absolute;top:26px;left:26px;right:-26px;bottom:-26px;border:1px solid rgba(189,115,85,.55);border-radius:999px 999px 0 0}
+.h2-art .big{position:absolute;inset:0;border-radius:999px 999px 0 0;overflow:hidden;background:var(--champagne);animation:arch 1.6s var(--ease) both}
+.h2-art .big img{width:100%;height:100%;object-fit:cover;animation:kenburns 14s ease-out both}
+.h2-art .small{position:absolute;left:-150px;bottom:48px;width:210px;aspect-ratio:1;border-radius:50%;overflow:hidden;border:8px solid var(--bg);box-shadow:0 30px 60px rgba(48,37,31,.18);z-index:4}
+.h2-art .small img{width:100%;height:100%;object-fit:cover}
+.h2-art .stamp{right:-30px;top:60px;bottom:auto;z-index:4}
+@keyframes arch{from{clip-path:inset(100% 0 0 0)}to{clip-path:inset(0)}} @keyframes kenburns{from{transform:scale(1.12)}to{transform:scale(1)}}
+.ticker{border-top:1px solid rgba(48,37,31,.14);border-bottom:1px solid rgba(48,37,31,.14);background:var(--ivory);overflow:hidden;white-space:nowrap;padding:18px 0}
+.ticker div{display:inline-block;animation:tick 60s linear infinite;font:italic 400 24px var(--serif);color:var(--ink)}
+.ticker span{margin:0 28px;color:var(--terra);font-style:normal;font-size:14px}
+@keyframes tick{to{transform:translateX(-50%)}}
+.hero2 .ticker{margin-top:0}
+
+/* luxury frames */
+.arch{outline:1px solid rgba(189,115,85,.4);outline-offset:9px}
+.card{background:transparent;padding:14px 14px 22px;border:1px solid rgba(48,37,31,.1)} .card:hover{border-color:var(--terra)}
+.cards{gap:26px}
+.benefits{background:var(--ivory);border-bottom:1px solid rgba(48,37,31,.08)}
+section h2{margin-bottom:6px}
+.prices{background:var(--contrast)} .row h3{font-size:30px;font-weight:400} .row .price{font-size:34px}
+.story .pic::before{border:1px solid rgba(255,255,255,.35);background:none}
+.story h2{font-size:clamp(44px,5.4vw,72px)}
+.step .n{width:62px;height:62px;font-style:italic;background:var(--ivory)}
+footer.site{padding-top:90px} footer.site .brand{font:400 clamp(70px,13vw,190px)/.9 var(--serif);letter-spacing:.12em;text-align:center;opacity:.12;margin:56px 0 -14px;text-transform:uppercase;white-space:nowrap;overflow:hidden}
+
+/* inner page hero */
+.page-hero{padding:70px 0 80px;background:radial-gradient(110% 120% at 90% 0%,var(--champagne),var(--bg) 62%);position:relative;overflow:hidden}
+.page-hero .wrap{display:grid;grid-template-columns:1.25fr .75fr;gap:60px;align-items:center}
+.page-hero .ph-art{aspect-ratio:3/4;max-height:460px;justify-self:end;width:min(100%,340px);border-radius:999px 999px 0 0;overflow:hidden;outline:1px solid rgba(189,115,85,.5);outline-offset:14px;background:var(--champagne)}
+.page-hero .ph-art img{width:100%;height:100%;object-fit:cover}
+.page-hero h1{font-size:clamp(46px,6.4vw,92px);line-height:.98}
+@media (max-width:980px){
+  .logo{font-size:26px} header.site .bar{padding:16px 0}
+  .h2grid{display:block;min-height:0} .h2-side{display:none}
+  .h2-copy{margin:0;padding:30px 0 20px} .h2-copy h1{font-size:clamp(50px,15vw,84px)} .h2-copy h1 .ln:nth-child(2)>span{padding-left:.5em}
+  .h2-art{width:86%;margin:20px auto 70px;height:auto;aspect-ratio:3/4;min-height:0}
+  .h2-art .small{left:-12%;width:38%;bottom:-40px} .h2-art .stamp{right:-14px;top:14px}
+  .page-hero .wrap{grid-template-columns:1fr} .page-hero .ph-art{justify-self:start;max-height:380px;margin-top:20px;width:min(86%,300px)}
+  .card{padding:10px 10px 18px}
+}
+
+/* hero.jpg has a black band along its bottom edge – crop it out wherever it is used */
+img.trim{height:128%!important;max-width:none;object-position:50% 0!important}

@@ -28,8 +28,8 @@ ${scripts}</body>
 </html>
 `);
 }
-const hero = (label, h1, lead = '') => `<div class="page-hero"><div class="wrap"><span class="label fx">${label}</span><h1 class="fx d1">${h1}</h1>${lead ? `<p class="lead fx d2">${lead}</p>` : ''}</div></div>`;
-const cta = `<section class="final"><div class="wrap grid"><div class="oval fx"><img data-img="s2" alt="ELOURE THE STUDIO Amriswil"></div><div class="fx d1"><h2>Bereit für dein<br><em>neues Hautgefühl?</em></h2><p>Buche dein Beratungsgespräch oder deine Behandlung – wir freuen uns auf dich.</p><a class="btn" data-book>Termin buchen →</a></div></div></section>`;
+const hero = (label, h1, lead = '', img = null) => `<div class="page-hero"><div class="wrap"><div><span class="label fx">${label}</span><h1 class="fx d1">${h1}</h1>${lead ? `<p class="lead fx d2">${lead}</p>` : ''}</div>${img ? `<div class="ph-art fx d2"><img data-img="${img[0]}" alt="ELOURE THE STUDIO" style="object-position:${img[1] || '50% 40%'}"></div>` : ''}</div></div>`;
+const cta = (k = 's5', pos = '50% 50%') => `<section class="final"><div class="wrap grid"><div class="oval fx"><img data-img="${k}" alt="ELOURE THE STUDIO Amriswil" style="object-position:${pos}"></div><div class="fx d1"><h2>Bereit für dein<br><em>neues Hautgefühl?</em></h2><p>Buche dein Beratungsgespräch oder deine Behandlung – wir freuen uns auf dich.</p><a class="btn" data-book>Termin buchen →</a></div></div></section>`;
 const tabs = `<div class="tabs" id="tabs"><button data-k="frauen">Frauen</button><button data-k="maenner">Männer</button><button data-k="beratung">Beratung &amp; Probebehandlung</button></div><div id="list"></div>`;
 const initTabs = '<script>initTabs(document.getElementById("tabs"),document.getElementById("list"))</script>\n';
 const legalNote = file => `<p class="note" style="background:var(--contrast);padding:16px 20px;border-radius:5px">Zusammenfassung der Inhalte von ELOURE THE STUDIO. Massgeblich ist der vollständige Wortlaut auf der bisherigen Website: <a href="https://www.elourethestudio.ch/${file}">elourethestudio.ch/${file}</a>.</p>`;
@@ -37,39 +37,39 @@ const legalNote = file => `<p class="note" style="background:var(--contrast);pad
 /* ---------- main pages ---------- */
 layout({ file: 'leistungen.html', title: 'Leistungen &amp; Preise Laserhaarentfernung Amriswil | ELOURE',
   desc: 'Alle Laserbehandlungen für Frauen und Männer mit Preisen und Dauer: Gesicht, Achseln, Bikini, Beine, Ganzkörper und mehr in Amriswil.',
-  body: `${hero('Leistungen &amp; Preise', 'Laserhaarentfernung, <em>die zu dir passt.</em>', 'Alle Behandlungen mit Dauer und Preis in CHF. Klicke auf eine Behandlung für Details oder buche direkt.')}
-<section style="padding-top:50px"><div class="wrap">${tabs}<p class="note">Bei Ganzkörperbehandlungen sind 3 Zonen deiner Wahl enthalten. Mehr Antworten findest du in den <a class="link" href="faq.html">FAQ</a>.</p></div></section>${cta}`, scripts: initTabs });
+  body: `${hero('Leistungen &amp; Preise', 'Laserhaarentfernung, <em>die zu dir passt.</em>', 'Alle Behandlungen mit Dauer und Preis in CHF. Klicke auf eine Behandlung für Details oder buche direkt.', ['service', '50% 65%'])}
+<section style="padding-top:50px"><div class="wrap">${tabs}<p class="note">Bei Ganzkörperbehandlungen sind 3 Zonen deiner Wahl enthalten. Mehr Antworten findest du in den <a class="link" href="faq.html">FAQ</a>.</p></div></section>${cta('s5')}`, scripts: initTabs });
 
 layout({ file: 'termin-buchen.html', title: 'Termin buchen | Laserhaarentfernung Amriswil | ELOURE',
   desc: 'Buche deine Laserbehandlung bei ELOURE THE STUDIO in Amriswil: Behandlung wählen, Wunschtermin angeben und Anfrage senden.',
-  body: `${hero('Termin buchen', 'Dein Weg zu <em>glatter Haut.</em>', 'Wähle Behandlung und Wunschtermin – wir bestätigen deinen Termin persönlich.')}
+  body: `${hero('Termin buchen', 'Dein Weg zu <em>glatter Haut.</em>', 'Wähle Behandlung und Wunschtermin – wir bestätigen deinen Termin persönlich.', ['s3', '50% 60%'])}
 <section style="padding-top:60px"><div class="wrap"><div id="wizard"></div></div></section>`, scripts: '<script src="booking.js"></script>\n' });
 
 layout({ file: 'ueber-uns.html', title: 'Über uns | Corine &amp; Caro | ELOURE THE STUDIO Amriswil',
   desc: 'Lerne Corine und Caro kennen – die Gesichter hinter ELOURE THE STUDIO in Amriswil. Zertifizierte Experten für Laserhaarentfernung mit persönlicher Betreuung.',
-  body: `${hero('Wer steckt dahinter', 'Hey, wir sind <em>Corine und Caro.</em>')}
-<section><div class="wrap two"><div class="arch fx"><img data-img="duo" alt="Corine und Caro, ELOURE THE STUDIO" style="width:100%;height:100%;object-fit:cover;object-position:50% 25%"></div>
+  body: `${hero('Wer steckt dahinter', 'Hey, wir sind <em>Corine und Caro.</em>', '', ['duo', '50% 18%'])}
+<section><div class="wrap two"><div class="arch fx"><img data-img="team" alt="Porträt – ELOURE THE STUDIO" style="width:100%;height:100%;object-fit:cover;object-position:50% 20%"></div>
  <div class="fx d1"><span class="label">Unsere Geschichte</span><h2>Mit Leidenschaft, Kompetenz und Empathie.</h2><div class="rule"></div>
  <p class="lead">Wir sind ELOURE THE STUDIO – deine zertifizierten Experten für Laserhaarentfernung. Unser Ziel ist es, dir zu einem selbstbewussten, strahlenden Auftreten zu verhelfen. Deine individuellen Bedürfnisse und persönliche Betreuung stehen dabei im Mittelpunkt.</p>
  <p class="lead" style="margin-top:16px">Wir arbeiten mit moderner Lasertechnologie, legen Wert auf faire Preise und hohe Qualität – damit du dich bei uns rundum wohlfühlst. Deine Zufriedenheit steht an erster Stelle.</p></div></div></section>
 <section class="story"><div class="wrap grid"><div class="copy fx"><span class="label">Unsere Philosophie</span><h2>Unsere Türen stehen <em>allen offen.</em></h2><p>Wir erklären dir im Beratungsgespräch den Ablauf, analysieren deine Haut und Haare und finden den passenden Behandlungsplan. Die Behandlung ist auch für empfindliche Haut geeignet.</p><a class="btn light" data-book="beratung-beratungsgespraech">Beratung buchen →</a></div>
- <div class="pic fx d1"><div class="arch"><img data-img="team" alt="Das Team von ELOURE THE STUDIO" style="object-position:50% 30%"></div></div></div></section>
+ <div class="pic fx d1"><div class="arch"><img data-img="s3" alt="Lounge im Studio" style="object-position:50% 55%"></div></div></div></section>
 <section><div class="wrap two"><div class="fx"><span class="label">Unser Studio</span><h2>Neu und exklusiv eingerichtet – im Zentrum von Amriswil.</h2><div class="rule"></div><p class="lead" style="margin-bottom:28px">Eine offene, vertrauensvolle Atmosphäre, in der wir auf jede Person individuell eingehen.</p><a class="link" href="unser-studio.html">Studio ansehen →</a></div>
- <div class="mosaic" style="grid-template-columns:1fr 1fr"><div class="zoom fx" style="aspect-ratio:3/4"><img data-img="s1" alt="ELOURE Studio"></div><div class="zoom fx d1" style="aspect-ratio:3/4;margin-top:40px"><img data-img="s3" alt="ELOURE Studio Details"></div></div></div></section>${cta}` });
+ <div class="mosaic" style="grid-template-columns:1fr 1fr"><div class="zoom fx" style="aspect-ratio:3/4"><img data-img="s1" alt="ELOURE Studio"></div><div class="zoom fx d1" style="aspect-ratio:3/4;margin-top:40px"><img data-img="s2" alt="ELOURE Studio Details"></div></div></div></section>${cta('s5')}` });
 
 const mosaicItem = (img, span, ratio, extra = '', alt = 'ELOURE THE STUDIO') => `<div class="zoom fx" style="grid-column:span ${span};aspect-ratio:${ratio};${extra}"><img data-img="${img}" alt="${alt}"></div>`;
 layout({ file: 'unser-studio.html', title: 'Unser Studio | ELOURE THE STUDIO Amriswil',
   desc: 'Ein Blick in unser Studio an der Bahnhofstrasse 20 in Amriswil – neu und exklusiv eingerichtet, ein Ort zum Wohlfühlen.',
-  body: `${hero('Unser Studio', 'Ein Ort <em>zum Wohlfühlen.</em>', 'Neu und exklusiv eingerichtet, im Zentrum von Amriswil – Bahnhofstrasse 20.')}
+  body: `${hero('Unser Studio', 'Ein Ort <em>zum Wohlfühlen.</em>', 'Neu und exklusiv eingerichtet, im Zentrum von Amriswil – Bahnhofstrasse 20.', ['s3', '50% 55%'])}
 <section><div class="wrap"><div class="mosaic">
- ${mosaicItem('s1', 7, '16/10', '', 'Studio Amriswil')}${mosaicItem('s2', 5, 'auto', 'border-radius:999px 999px 6px 6px;min-height:340px', 'Studio Detail')}
- ${mosaicItem('s3', 4, '1', '', 'Studio')}${mosaicItem('s4', 4, '1', '', 'Studio')}${mosaicItem('s5', 4, '1', '', 'Studio')}
- ${mosaicItem('room', 6, '4/3', '', 'Behandlungsraum')}${mosaicItem('team', 6, '4/3', '', 'Das ELOURE Team')}</div></div></section>
-<section class="studio"><div class="wrap two"><div class="fx"><span class="label">Anfahrt</span><h2>Mitten in Amriswil.</h2><div class="rule"></div><p class="lead" style="margin-bottom:26px">ELOURE THE STUDIO<br>Bahnhofstrasse 20<br>8580 Amriswil<br>Mo–Fr 10:00–20:00 · Sa 10:00–16:00</p><a class="link" href="kontakt.html">Kontakt &amp; Karte →</a></div><div class="map fx" style="margin:0;aspect-ratio:4/3"><iframe loading="lazy" title="Karte" src="https://www.google.com/maps?q=Bahnhofstrasse+20,+8580+Amriswil&amp;output=embed"></iframe></div></div></section>${cta}` });
+ ${mosaicItem('s5', 7, '16/10', '', 'Studio Amriswil')}${mosaicItem('s2', 5, 'auto', 'border-radius:999px 999px 6px 6px;min-height:340px', 'Studio Detail')}
+ ${mosaicItem('s4', 4, '1', '', 'Behandlungsliege')}${mosaicItem('room', 4, '1', '', 'Studio')}${mosaicItem('s1', 4, '1', '', 'Behandlungsraum')}
+ ${mosaicItem('hero', 8, '16/9', '', 'Behandlung im Studio')}${mosaicItem('service', 4, 'auto', 'min-height:240px', 'Behandlung')}</div></div></section>
+<section class="studio"><div class="wrap two"><div class="fx"><span class="label">Anfahrt</span><h2>Mitten in Amriswil.</h2><div class="rule"></div><p class="lead" style="margin-bottom:26px">ELOURE THE STUDIO<br>Bahnhofstrasse 20<br>8580 Amriswil<br>Mo–Fr 10:00–20:00 · Sa 10:00–16:00</p><a class="link" href="kontakt.html">Kontakt &amp; Karte →</a></div><div class="map fx" style="margin:0;aspect-ratio:4/3"><iframe loading="lazy" title="Karte" src="https://www.google.com/maps?q=Bahnhofstrasse+20,+8580+Amriswil&amp;output=embed"></iframe></div></div></section>${cta('team', '50% 22%')}` });
 
 layout({ file: 'kontakt.html', title: 'Kontakt &amp; Anfahrt | ELOURE THE STUDIO Amriswil',
   desc: 'Kontakt, Anfahrt und Öffnungszeiten von ELOURE THE STUDIO, Bahnhofstrasse 20, 8580 Amriswil.',
-  body: `${hero('Kontakt &amp; Anfahrt', 'Wir freuen uns <em>auf dich.</em>')}
+  body: `${hero('Kontakt &amp; Anfahrt', 'Wir freuen uns <em>auf dich.</em>', '', ['room', '50% 55%'])}
 <section><div class="wrap"><div class="contact-grid">
  <dl class="info fx"><dt>Adresse</dt><dd>ELOURE THE STUDIO<br>Bahnhofstrasse 20<br>8580 Amriswil</dd><dt>Telefon / WhatsApp</dt><dd><a href="tel:+41765297129">+41 76 529 71 29</a></dd><dt>E-Mail</dt><dd><a href="mailto:elourethestudio@outlook.com">elourethestudio@outlook.com</a></dd><dt>Öffnungszeiten</dt><dd>Montag–Freitag 10:00–20:00<br>Samstag 10:00–16:00</dd><dt>Instagram</dt><dd><a href="https://www.instagram.com/elourethestudio/">@elourethestudio</a></dd><br><br><a class="btn" data-book>Termin buchen →</a></dl>
  <form class="fx d1" id="contact" novalidate>
@@ -106,9 +106,9 @@ const FAQ = [
 ];
 layout({ file: 'faq.html', title: 'FAQ Laserhaarentfernung | ELOURE THE STUDIO Amriswil',
   desc: 'Antworten auf häufige Fragen zur Laserhaarentfernung: Ablauf, Vorbereitung, Nachsorge, Ergebnisse und Anzahl Sitzungen.',
-  body: `${hero('FAQ', 'Gut zu wissen – <em>deine Fragen.</em>')}<section style="padding-top:50px"><div class="wrap prose" style="max-width:860px">
+  body: `${hero('FAQ', 'Gut zu wissen – <em>deine Fragen.</em>', '', ['s2', '50% 40%'])}<section style="padding-top:50px"><div class="wrap prose" style="max-width:860px">
 ${FAQ.map(([q, a]) => `<details class="fx"><summary>${q}</summary><p>${a}</p></details>`).join('\n')}
-<p class="note" style="margin-top:30px">Noch Fragen? <a class="link" href="kontakt.html">Schreib uns</a> oder <a class="link" href="termin-buchen.html?s=beratung-beratungsgespraech">buche ein Beratungsgespräch</a>.</p></div></section>${cta}`,
+<p class="note" style="margin-top:30px">Noch Fragen? <a class="link" href="kontakt.html">Schreib uns</a> oder <a class="link" href="termin-buchen.html?s=beratung-beratungsgespraech">buche ein Beratungsgespräch</a>.</p></div></section>${cta('s5')}`,
   ld: JSON.stringify({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: FAQ.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) }) });
 
 /* ---------- Rechtliches ---------- */
@@ -144,7 +144,8 @@ layout({ file: 'datenschutz.html', title: 'Datenschutzerklärung | ELOURE THE ST
 
 /* ---------- one page per treatment ---------- */
 const FACE = /Gesicht|Oberlippe|Konturen/;
-const IMGS = ['s1', 's2', 's3', 's4', 's5', 'room'];
+const IMGS = ['s4', 'service', 's3', 'room', 's2', 's1', 'hero', 's5'];
+const CONS = { 'beratung-beratungsgespraech': ['s3', 's5'], 'beratung-probebehandlung-achsel-inkl-beratung': ['s4', 's1'] };
 ALL.forEach((s, i) => {
   const isCons = s.cat === 'beratung', who = s.cat === 'maenner' ? 'Männer' : s.cat === 'frauen' ? 'Frauen' : '';
   const price = s.price == null ? 'auf Anfrage' : `${s.price} CHF`;
@@ -162,9 +163,9 @@ ALL.forEach((s, i) => {
   <p class="lead">${s.desc ? s.desc + '.' : `Professionelle Laserhaarentfernung${who ? ' für ' + who : ''} bei ELOURE THE STUDIO in Amriswil – präzise, sicher und persönlich betreut.`}</p>
   <div class="facts"><div><small>Dauer</small><b>${s.dur}</b></div><div><small>Preis</small><b>${price}</b></div></div>
   <a class="btn" href="${BOOK}?s=${s.slug}">${isCons ? 'Termin anfragen' : 'Jetzt buchen'} →</a></div>
- <div class="arch fx d1"><img data-img="${IMGS[i % IMGS.length]}" alt="ELOURE THE STUDIO – ${esc(s.name)}" style="object-position:50% 40%"></div></div></section>
+ <div class="arch fx d1"><img data-img="${(CONS[s.slug] || [IMGS[i % 8]])[0]}" alt="ELOURE THE STUDIO – ${esc(s.name)}" style="object-position:50% 40%"></div></div></section>
 <section style="padding-top:0"><div class="wrap prose">${prep}
 <h2>Termin &amp; Zahlung</h2><p>Absagen sind bis 24 Stunden vor dem Termin möglich. Bezahlt wird bar vor Ort nach der Behandlung. Öffnungszeiten: Mo–Fr 10:00–20:00, Sa 10:00–16:00.</p>
-<h2>Weitere Behandlungen</h2><div class="chips">${related.map(r => `<a href="${r.page}">${esc(r.name)}</a>`).join('')}</div></div></section>${cta}` });
+<h2>Weitere Behandlungen</h2><div class="chips">${related.map(r => `<a href="${r.page}">${esc(r.name)}</a>`).join('')}</div></div></section>${cta((CONS[s.slug] || [0, IMGS[(i + 4) % 8]])[1])}` });
 });
 console.log('pages written:', 9 + ALL.length);
